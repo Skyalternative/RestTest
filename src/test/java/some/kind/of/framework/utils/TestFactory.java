@@ -10,12 +10,16 @@
 
 package some.kind.of.framework.utils;
 
-import some.kind.of.framework.api.WaiveApi;
+import some.kind.of.framework.api.ApiInstance;
 
 public class TestFactory {
+    public ApiInstance getApi(Login loginState) {
+        ApiInstance api = new ApiInstance(new ConfigHandler());
 
-    public WaiveApi getApi() {
-        return new WaiveApi();
+        if (loginState == Login.LOGGED_IN) {
+            api.login();
+        }
+
+        return api;
     }
-
 }

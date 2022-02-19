@@ -10,22 +10,31 @@
 
 package some.kind.of.tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import some.kind.of.framework.api.WaiveApi;
+import some.kind.of.framework.api.ApiInstance;
+import some.kind.of.framework.utils.Login;
 import some.kind.of.framework.utils.TestFactory;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Tag("fast")
-class SkeletonTest {
+@Tag("Login")
+class LoginTest {
+
+    private ApiInstance api;
+
+    @BeforeEach
+    public void setUp() {
+        api = new TestFactory().getApi(Login.LOGGED_OUT);
+    }
 
     @Test
-    @DisplayName("Test sample")
-    void testSample() {
-        WaiveApi api = new TestFactory().getApi();
-        assertEquals(2, api.sum(1, 1), "1 + 1 should equal 2");
+    @DisplayName("Login Test")
+    @Tag("Positive")
+    void loginTest() {
+        assertTrue(api.login());
     }
 
 }
