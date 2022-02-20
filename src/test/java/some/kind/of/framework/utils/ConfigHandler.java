@@ -10,7 +10,7 @@ public class ConfigHandler {
 
     public ConfigHandler() {
         try (InputStream input = Thread.currentThread().getContextClassLoader()
-                .getResourceAsStream("config.properties");) {
+                .getResourceAsStream("config.properties")) {
             Properties props = new Properties();
             props.load(input);
             properties = props;
