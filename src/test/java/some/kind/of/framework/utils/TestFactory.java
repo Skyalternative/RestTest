@@ -2,15 +2,16 @@ package some.kind.of.framework.utils;
 
 import some.kind.of.framework.api.Api;
 import some.kind.of.framework.api.ApiHandler;
+import some.kind.of.framework.data.LoginState;
 
 public class TestFactory {
-    public ApiHandler getApi(Login loginState) {
-        ApiHandler api = new ApiHandler(new ConfigHandler(), new Api());
+    public ApiHandler getApi(LoginState loginState) {
+        ApiHandler apiHandler = new ApiHandler(new ConfigHandler(), new Api());
 
-        if (loginState == Login.LOGGED_IN) {
-             api.login().then().statusCode(200);
+        if (loginState == LoginState.LOGGED_IN) {
+            apiHandler.setLoginState(LoginState.LOGGED_IN);
         }
 
-        return api;
+        return apiHandler;
     }
 }

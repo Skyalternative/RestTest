@@ -1,13 +1,15 @@
 package some.kind.of.framework.api;
 
+import some.kind.of.framework.api.user.Users;
+
 public class Api {
-    private final ApiUsers apiUsers;
+    private final Users users;
 
     public Api() {
-        this.apiUsers = new ApiUsers();
+        this.users = new Users();
     }
 
-    public ApiUsers getApiUsers() {
-        return apiUsers;
+    public Users getUser() {
+        return users;
     }
 }
